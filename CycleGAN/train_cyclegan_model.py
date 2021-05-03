@@ -11,6 +11,8 @@ from dataset_utils import download_and_processing_cyclegan_dataset, predefined_c
 from cyclegan_model import unet_generator, discriminator, \
     generator_loss, discriminator_loss, calc_cycle_loss, identity_loss
 
+config = tf.compat.v1.ConfigProto(gpu_options=tf.compat.v1.GPUOptions(allow_growth=True))
+sess = tf.compat.v1.Session(config=config)
 
 def generate_images(epoch, model, test_input, store_produce_image_dir):
     if not os.path.exists(store_produce_image_dir):
